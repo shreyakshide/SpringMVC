@@ -8,15 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.annotation.Generated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-
-import jakarta.annotation.Generated;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name="employee")
@@ -26,69 +20,80 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonProperty("empid")
 	@Column(name="empid")
 	private String empid;
 	
-	@Column(name="empname")
-	private String empname;
-	
-	@Column(name="empemail")
-	private String empemail;
-	
-	public int getId() {
-		return id;
-	}
+	@JsonProperty("empname")
+    @Column(name="empname")
+    private String empname;
+    
+    @JsonProperty("empemail")
+    @Column(name="empemail")
+    private String empemail;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @JsonProperty("empcity")
+    @Column(name="empcity")
+    private String empcity;
+    
+    @JsonProperty("empcontactno")
+    @Column(name="empcontactno")
+    private String empcontactno;
+    
+    
+    public int getId() {
+        return id;
+    }
 
-	public String getEmp_contact_no() {
-		return empcontactno;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setEmp_contact_no(String empcontactno) {
-		this.empcontactno = empcontactno;
-	}
 
-	@Column(name="empcity")
-	private String empcity;
-	
-	@Column(name="empcontactno")
-	private String empcontactno;
-	
-	public String getEmp_id() {
-		return empid;
-	}
+    @JsonIgnore // 👈 Add this to every getter to hide the "emp_id" version
+    public String getEmp_id() {
+        return empid;
+    }
 
-	public void setEmp_id(String empid) {
-		this.empid = empid;
-	}
+    public void setEmp_id(String empid) {
+        this.empid = empid;
+    }
 
-	public String getEmp_name() {
-		return empname;
-	}
+    @JsonIgnore // 👈 Add this here too
+    public String getEmp_name() {
+        return empname;
+    }
 
-	public void setEmp_name(String empname) {
-		this.empname = empname;
-	}
+    public void setEmp_name(String empname) {
+        this.empname = empname;
+    }
 
-	public String getEmp_email() {
-		return empemail;
-	}
+    @JsonIgnore // 👈 And here
+    public String getEmp_email() {
+        return empemail;
+    }
 
-	public void setEmp_email(String empemail) {
-		this.empemail = empemail;
-	}
+    public void setEmp_email(String empemail) {
+        this.empemail = empemail;
+    }
 
-	public String getEmp_city() {
-		return empcity;
-	}
+    @JsonIgnore // 👈 And here
+    public String getEmp_city() {
+        return empcity;
+    }
 
-	public void setEmp_city(String empcity) {
-		this.empcity = empcity;
-	}
+    public void setEmp_city(String empcity) {
+        this.empcity = empcity;
+    }
 
+    @JsonIgnore // 👈 And here
+    public String getEmp_contact_no() {
+        return empcontactno;
+    }
+
+    public void setEmp_contact_no(String empcontactno) {
+        this.empcontactno = empcontactno;
+    }
 	
 
 }
